@@ -1,8 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 
 interface CartContextType {
-  cartProducts: any[];
-  setCartProducts: React.Dispatch<React.SetStateAction<any[]>>;
+  cartProducts: string[];
+  setCartProducts: React.Dispatch<React.SetStateAction<string[]>>;
   addProduct: (productId: string) => void;
   removeProduct: (productId: string) => void;
   clearCart: () => void;

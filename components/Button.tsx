@@ -19,6 +19,20 @@ export const ButtonStyle = (
     height: 16px;
     margin-right: 5px;
   }
+  ${props.white && props.outline && css`
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+`}
+  ${props.black && props.outline && css`
+  background-color: transparent;
+  color: #000;
+  border: 1px solid #000;
+`}
+  ${props.black && !props.outline && css`
+  background-color: #000;
+  color: #fff;
+`}
   ${props.block && css`
     display: block;
     width: 100%;
@@ -26,20 +40,6 @@ export const ButtonStyle = (
   ${props.white && !props.outline && css`
     background-color: #fff;
     color: #000;
-  `}
-  ${props.white && props.outline && css`
-    background-color: transparent;
-    color: #fff;
-    border: 1px solid #fff;
-  `}
-  ${props.black && !props.outline && css`
-    background-color: #000;
-    color: #fff;
-  `}
-  ${props.black && props.outline && css`
-    background-color: transparent;
-    color: #000;
-    border: 1px solid #000;
   `}
   ${props.primary && !props.outline && css`
     background-color: ${primary};
@@ -69,9 +69,11 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   primary?: boolean;
   black?: boolean;
   block?: boolean;
+  white?: boolean;
+  outline?: boolean;
 }
 
-export default function Button({primary, children, ...rest }: Props) {
+export default function Button({children, ...rest }: Props) {
   return (
     <StyledButton {...rest}>{children}</StyledButton>
   );

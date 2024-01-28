@@ -9,12 +9,17 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { Setting } from "@/models/Setting";
 import { GetServerSidePropsContext } from "next";
 import { IProductResponse } from "@/types/Product";
+import styled from "styled-components";
 
 interface HomePageProps {
   featuredProduct: IProductResponse;
   newProducts: IProductResponse[];
   wishedNewProducts: string[];
 }
+
+const NewProductsWrapper = styled.div`
+  margin-bottom: 30px;
+`
 
 export default function HomePage({
   featuredProduct,
@@ -25,7 +30,9 @@ export default function HomePage({
     <div>
       <Header />
       <Featured product={featuredProduct} />
-      <NewProducts products={newProducts} wishedProducts={wishedNewProducts} />
+      <NewProductsWrapper>
+        <NewProducts products={newProducts} wishedProducts={wishedNewProducts} />
+      </NewProductsWrapper>
     </div>
   );
 }

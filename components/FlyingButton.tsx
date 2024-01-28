@@ -10,6 +10,7 @@ interface FlyingButtonProps {
   _id?: string;
   src?: string;
   children?: React.ReactNode;
+  outline?: boolean;
 }
 
 const flyAnimation = keyframes`
@@ -23,7 +24,7 @@ const flyAnimation = keyframes`
   }
 `;
 
-const FlyingButtonWrapper = styled.div<{ white?: boolean; main?: boolean }>`
+const FlyingButtonWrapper = styled.div<{ white?: boolean; main?: boolean, outline?: boolean }>`
   button {
     ${ButtonStyle};
     ${({ main }) => main ? `

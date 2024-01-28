@@ -1,10 +1,13 @@
+"use client"
+
 import Center from "@/components/Center";
 import styled from "styled-components";
-import ButtonLink from "@/components/ButtonLink";
+import Button from "@/components/Button";
 import CartIcon from "@/components/icons/CartIcon";
 import FlyingButton from "@/components/FlyingButton";
 import { RevealWrapper } from 'next-reveal';
 import { IProductResponse } from "@/types/Product";
+import Link from "next/link";
 
 const Bg = styled.div`
   background-color: #222;
@@ -95,11 +98,14 @@ export default function Featured({ product }: FeaturedProps) {
                   <Title>{product.title}</Title>
                   <Desc>{product.description}</Desc>
                   <ButtonsWrapper>
-                    <ButtonLink href={'/product/' + product._id} outline={1} white={1}>Read more</ButtonLink>
+                    <Link href={'/product/' + product._id}>
+                      <Button outline white>
+                        Read more
+                      </Button>
+                    </Link>
+                    {/* <ButtonLink href={'/product/' + product._id} outline={1} white={1}>Read more</ButtonLink> */}
                     <FlyingButton white _id={product._id} src={product.images?.[0]}>
-                      <CartIcon  />
-                      
-                      Add to cart
+                      <CartIcon  /> Add to cart
                     </FlyingButton>
                   </ButtonsWrapper>
                 </ContentWrapper>
