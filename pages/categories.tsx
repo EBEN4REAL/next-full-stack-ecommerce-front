@@ -106,20 +106,26 @@ export async function getServerSideProps(
 ): Promise<{ props: CategoryPageProps }> {
   await mongooseConnect();
   const categories = await Category.find();
+
   const mainCategories = categories.filter((c) => !c.parent);
   const categoriesProducts: { [key: string]: IProductResponse[] } = {};
   const allFetchedProductsId: string[] = [];
+
   for (const mainCat of mainCategories) {
     const mainCatId = mainCat._id.toString();
+
     const childCatIds = categories
       .filter((c) => c?.parent?.toString() === mainCatId)
       .map((c) => c._id.toString());
+
     const categoriesIds = [mainCatId, ...childCatIds];
+
     const products = await Product.find(
       { category: categoriesIds },
       null,
       { limit: 3, sort: { _id: -1 } }
     );
+
     allFetchedProductsId.push(...products.map((p) => p._id.toString()));
     categoriesProducts[mainCat._id] = products;
   }

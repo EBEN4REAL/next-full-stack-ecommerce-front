@@ -3,6 +3,7 @@ import { ButtonStyle } from "@/components/Button";
 import { primary } from "@/lib/colors";
 import { useContext, useEffect, useRef, MouseEvent } from "react";
 import { CartContext } from "@/components/CartContext";
+import Image from "next/image";
 
 interface FlyingButtonProps {
   white?: boolean;
@@ -61,8 +62,8 @@ export default function FlyingButton(props: FlyingButtonProps) {
   function sendImageToCart(ev: MouseEvent<HTMLButtonElement>) {
     if (imgRef.current) {
       imgRef.current.style.display = 'inline-block';
-      imgRef.current.style.left = (ev.clientX - 50) + 'px';
-      imgRef.current.style.top = (ev.clientY - 50) + 'px';
+      imgRef.current.style.left = (ev.clientX) + 'px';
+      imgRef.current.style.top = (ev.clientY) + 'px';
       setTimeout(() => {
         if (imgRef.current) {
           imgRef.current.style.display = 'none';
@@ -84,7 +85,7 @@ export default function FlyingButton(props: FlyingButtonProps) {
 
   return (
     <FlyingButtonWrapper white={props.white} main={props.main}>
-      <img src={props.src} alt="" ref={imgRef} />
+      <img src={props.src} alt="Featured Image" ref={imgRef} />
       <button onClick={(ev) => sendImageToCart(ev)}>{props.children}</button>
     </FlyingButtonWrapper>
   );

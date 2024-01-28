@@ -1,10 +1,6 @@
 import styled from "styled-components";
-import Button, { ButtonStyle } from "@/components/Button";
-import CartIcon from "@/components/icons/CartIcon";
 import Link from "next/link";
-import { useContext, useEffect, useState } from "react";
-import { CartContext } from "@/components/CartContext";
-import { primary } from "@/lib/colors";
+import { useState } from "react";
 import FlyingButton from "@/components/FlyingButton";
 import HeartOutlineIcon from "@/components/icons/HeartOutlineIcon";
 import HeartSolidIcon from "@/components/icons/HeartSolidIcon";
@@ -86,7 +82,7 @@ const WishlistButton = styled.button<{ wished: boolean }>`
 `;
 
 interface Props {
-  _id?: string | undefined;
+  _id?: string;
   title?: string;
   description?: string;
   price?: string;

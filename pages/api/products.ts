@@ -1,15 +1,18 @@
 import {mongooseConnect} from "@/lib/mongoose";
 import {Product} from "@/models/Product";
+import { NextApiRequest, NextApiResponse } from "next";
 
-export default async function handle(req, res) {
+export default async function handle(req: NextApiRequest, res: NextApiResponse) {
   await mongooseConnect();
   const {categories, sort, phrase, ...filters} = req.query;
-  let [sortField, sortOrder] = (sort || '_id-desc').split('-');
+  let [sortField, sortOrder] = ((sort || '_id-desc') as string).split('-')
 
-  const productsQuery = {};
-  if (categories) {
+  const productsQuery: Record<string, unknown> = {};
+
+  if (categories && !Array.isArray(categories)) {
     productsQuery.category = categories.split(',');
   }
+  
   if (phrase) {
     productsQuery['$or'] = [
       {title:{$regex:phrase,$options:'i'}},

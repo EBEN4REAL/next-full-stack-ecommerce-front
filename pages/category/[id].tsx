@@ -1,5 +1,4 @@
 import Header from "@/components/Header";
-import Title from "@/components/Title";
 import Center from "@/components/Center";
 import {Category} from "@/models/Category";
 import {Product} from "@/models/Product";
@@ -55,7 +54,7 @@ export default function CategoryPage({
   category,subCategories, products:originalProducts
 }: Props) {
   const defaultSorting = '_id-desc';
-  const defaultFilterValues = category.properties.map(p => ({name:p.name,value:'all'}));
+  const defaultFilterValues = category.properties.map(p => ({name:p.name, value:'all'}));
   const [products,setProducts] = useState(originalProducts);
   const [filtersValues,setFiltersValues] = useState(defaultFilterValues);
   const [sort,setSort] = useState(defaultSorting);

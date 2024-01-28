@@ -103,7 +103,6 @@ export default function Featured({ product }: FeaturedProps) {
                         Read more
                       </Button>
                     </Link>
-                    {/* <ButtonLink href={'/product/' + product._id} outline={1} white={1}>Read more</ButtonLink> */}
                     <FlyingButton white _id={product._id} src={product.images?.[0]}>
                       <CartIcon  /> Add to cart
                     </FlyingButton>
@@ -113,7 +112,7 @@ export default function Featured({ product }: FeaturedProps) {
             </div>
           </Column>
           <ImgColumn>
-            <RevealWrapper delay={0}>
+            <RevealWrapper delay={0} origin={"right"}>
               <CenterImg>
                 <img className={'main'} src={product.images?.[0]} alt="" />
               </CenterImg>

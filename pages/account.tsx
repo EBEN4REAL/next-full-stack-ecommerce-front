@@ -56,7 +56,7 @@ export default function AccountPage() {
   const [addressLoaded, setAddressLoaded] = useState<boolean>(true);
   const [wishlistLoaded, setWishlistLoaded] = useState<boolean>(true);
   const [orderLoaded, setOrderLoaded] = useState<boolean>(true);
-  const [wishedProducts, setWishedProducts] = useState<any[]>([]);
+  const [wishedProducts, setWishedProducts] = useState<IProductResponse[]>([]);
   const [activeTab, setActiveTab] = useState<string>('Orders');
   const [orders, setOrders] = useState<any[]>([]);
 
@@ -71,6 +71,7 @@ export default function AccountPage() {
   }
 
   function saveAddress() {
+    console.log("EBEN")
     const data: AddressData = { name, email, city, streetAddress, postalCode, country };
     axios.put('/api/address', data);
   }
@@ -101,7 +102,7 @@ export default function AccountPage() {
     });
   }, [session]);
 
-  function productRemovedFromWishlist(idToRemove: string) {
+  function productRemovedFromWishlist(idToRemove: string | undefined) {
     setWishedProducts((products) => {
       return [...products.filter((p) => p._id.toString() !== idToRemove)];
     });

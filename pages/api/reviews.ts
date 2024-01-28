@@ -1,7 +1,8 @@
 import {mongooseConnect} from "@/lib/mongoose";
 import {Review} from "@/models/Review";
+import { NextApiRequest, NextApiResponse } from "next";
 
-export default async function handle(req, res) {
+export default async function handle(req: NextApiRequest, res: NextApiResponse) {
   await mongooseConnect();
 
   if (req.method === 'POST') {

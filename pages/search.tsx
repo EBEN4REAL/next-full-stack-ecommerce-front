@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import Center from "@/components/Center";
 import Input from "@/components/Input";
 import styled from "styled-components";
-import {SetStateAction, useCallback, useEffect, useRef, useState} from "react";
+import {SetStateAction, useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import ProductsGrid from "@/components/ProductsGrid";
 import {debounce} from "lodash";
@@ -29,6 +29,7 @@ export default function SearchPage() {
   const debouncedSearch = useCallback(
     debounce(searchProducts, 500), []
   );
+
   useEffect(() => {
     if (phrase.length > 0) {
       setIsLoading(true);

@@ -53,7 +53,7 @@ export default function ProductPage({product}: Props) {
               <div>
                 <FlyingButton main _id={product._id} src={product.images?.[0]}>
                   <CartIcon /> 
-                  {/* Add to cart */}
+                  Add to cart
                 </FlyingButton>
               </div>
             </PriceRow>

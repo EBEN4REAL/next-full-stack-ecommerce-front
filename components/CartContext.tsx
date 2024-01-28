@@ -22,7 +22,7 @@ interface CartContextProviderProps {
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
   const ls = typeof window !== "undefined" ? window.localStorage : null;
-  const [cartProducts, setCartProducts] = useState<any[]>([]);
+  const [cartProducts, setCartProducts] = useState<string[]>([]);
 
   useEffect(() => {
     if (cartProducts?.length > 0) {
@@ -36,11 +36,11 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     }
   }, [ls]);
 
-  function addProduct(productId: any) {
+  function addProduct(productId: string) {
     setCartProducts((prev) => [...prev, productId]);
   }
 
-  function removeProduct(productId: any) {
+  function removeProduct(productId: string) {
     setCartProducts((prev) => {
       const pos = prev.indexOf(productId);
       if (pos !== -1) {

@@ -7,7 +7,7 @@ const Wrapper = styled.div<{fullWidth: boolean}>`
     display:flex;
     justify-content:center;
   ` : `
-    border: 5xp solid blue;
+    border: 5px solid blue;
   `}
 `;
 

@@ -51,6 +51,7 @@ export default function StarsRating({
       onChange(n);
     }
   }
+
   return (
     <StarsWrapper>
       {five.map(n => (

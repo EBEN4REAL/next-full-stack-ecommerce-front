@@ -2,10 +2,11 @@ import {mongooseConnect} from "@/lib/mongoose";
 const stripe = require('stripe')(process.env.STRIPE_SK);
 import {buffer} from 'micro';
 import {Order} from "@/models/Order";
+import { NextApiRequest, NextApiResponse } from "next";
 
 const endpointSecret = "whsec_634d3142fd2755bd61adaef74ce0504bd2044848c8aac301ffdb56339a0ca78d";
 
-export default async function handler(req,res) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   await mongooseConnect();
   const sig = req.headers['stripe-signature'];
 
@@ -14,7 +15,7 @@ export default async function handler(req,res) {
   try {
     event = stripe.webhooks.constructEvent(await buffer(req), sig, endpointSecret);
   } catch (err) {
-    res.status(400).send(`Webhook Error: ${err.message}`);
+    res.status(400).send(`Webhook Error: ${(err as Error).message}`);
     return;
   }
 
