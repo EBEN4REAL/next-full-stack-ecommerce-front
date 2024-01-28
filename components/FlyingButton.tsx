@@ -70,6 +70,7 @@ export default function FlyingButton(props: FlyingButtonProps) {
         }
       }, 1000);
     }
+    addProduct(props._id as string)
   }
 
   useEffect(() => {
